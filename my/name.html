@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>你的名字是?</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        outline: medium;
+        background: transparent;
+        border: none
+    }
+    html{
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      color: #fff;
+    }
+    body{
+        /* counter-reset: boxnum; */
+        height: 100%;
+        min-width: 320px;
+        max-width: 750px;
+        margin: 0 auto;
+        background: url(http://img.hb.aicdn.com/c8bacdde0d614fb1e4f114b4cb2bd3c28cf3f61316ce6-mRsL9K_fw658) no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        position: relative;
+    }
+    .firstQuestion{
+      text-align: center;
+      padding-top: 20px
+    }
+    .firstQuestion>input{
+      caret-color: rgba(32, 179, 238, .6);
+      border-bottom: 1px solid; 
+      padding: 2px 0;
+    }
+    ::-webkit-input-placeholder{
+      padding-left: 5px
+    }
+    .border{
+        position: relative;
+        display: inline-block;
+        width: fit-content;
+    }
+    .border::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        border: 1px solid #fff;
+        width: 200%;
+        height: 200%;
+        /* border-radius: 8px; */
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+    .border input{
+      width: 40px;
+      height: 20px;
+      line-height: 24px;
+      text-align: center;
+      margin: 2px 3px;
+      text-shadow: 1px 1px #eee;
+    }
+
+    .box::before{
+        counter-increment: boxnum; 
+        content:"(" counter(boxnum) ")";
+        margin-left: 10px;
+    }
+    
+    .dialog{
+      width: 300px;
+      height: 150px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-style: italic;
+      /* text-align: left; */
+      letter-spacing: 2px;
+      background-color: rgba(211, 201, 201, 0.5);
+      display: none
+      /* position: relative; */
+    }
+    .dialog .msg{
+      margin: 20px;
+    }
+    .dialog .btn{
+      width: 160px;
+      position: absolute;
+      bottom: 30px;
+      left: 70px;
+    }
+    .dialog .btn button{
+      padding: 5px;
+      background: linear-gradient(135deg,rgb(238, 227, 227),rgb(238, 238, 207),rgb(180, 233, 233));
+      border-radius: 3px
+    }
+    .dialog .btn button:last-child{
+      float: right;
+    }
+    .myAnswer{
+      margin: 15%;
+    }
+  </style>
+</head>
+
+<body>
+  <audio src="../media/全素妍-Smile, Smile, Smile.mp3" loop></audio>
+  <div class="firstQuestion">
+    <input type="text" placeholder="请输入你的名字">
+    <div class="border"><input type="button" value="提交"></div>
+  </div>
+  <!-- <div class="box">
+   
+  </div>
+  <div class="box">
+      
+  </div> -->
+  <div class="dialog">
+    <div class="msg"></div>
+    <div class="btn">
+      <button class="yes">是的</button><button class="no">不是的</button>
+    </div>
+  </div>
+  <div class="myAnswer">
+
+  </div>
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  window.onload = function () {
+    var time = new Date().getHours();
+    if (time < 10) {
+      alert("早上好")
+    } else if (time < 14 && time > 10) {
+      alert("中午好")
+    } else if (time > 22) {
+      alert("该睡觉了, 晚安")
+    }
+  }
+
+  $("input").on("tap, click", function () {
+    $("audio")[0].play()
+  })
+  $(".border").on("tap, click", function () {
+    $(".firstQuestion").css("visibility","hidden");
+    var input = $("input[type=text]").val();
+    checkName(input);
+  })
+
+  function checkName(input) {
+    if (input == '刘慧敏' || input == '刘敏') {
+      showDialog("我知道我叫你宝贝你不会不开心, 对吧?")
+    }
+  }
+
+  function showDialog(msg) {
+    var windowWidth = $("body").width();
+    var windowHeight = $(window).height();
+
+    $('div.dialog').css({
+      'top': (windowHeight / 2) - 75 + 'px',
+      'left': (windowWidth / 2) - 150 + 'px',
+      'position': 'absolute'
+    }).show();
+    $('div.dialog .msg').text(msg);
+
+  }
+  $(".dialog .btn .yes").on("tap, click", function () {
+    typeLetter("哈哈, 很开心呢");
+    $('div.dialog').fadeOut();
+    setTimeout(() => {
+      // clearInterval(typeLetter)
+      $(".myAnswer").fadeOut();
+      alert("先这样吧, 一首《smile，smile，smile》送给你 (*￣︶￣)")
+    }, 4000);
+  })
+  $(".dialog .btn .no").on("tap, click", function () {
+    showDialog2("Ծ‸Ծ (╥╯^╰╥)" +'\n\n'+ "没啥说的了");
+    $('div.dialog').fadeOut();
+  })
+
+  function showDialog2(msg) {
+    alert(msg)
+  }
+
+  var typeLetter = function (msg) {
+    var length = msg.length;
+    var count = 0;
+    setInterval(function () {
+      $(".myAnswer").text(msg.substr(0, count));
+      count++
+    }, 250)
+  }
+
+
+</script>
