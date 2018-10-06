@@ -2,10 +2,10 @@ var ua = navigator.userAgent.toLowerCase();
 alert(ua)
 var isWx = function () {
         return ua.match(/MicroMessenger/i) == 'micromessenger';
-    },
-    var isQQ = function () {
-        return !!ua.match(/mqqbrowser|qzone|qqbrowser/i);
     }
+var isQQ = function () {
+    return !!ua.match(/mqqbrowser|qzone|qqbrowser/i);
+}
 
 if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
     var div = document.createElement("div");
