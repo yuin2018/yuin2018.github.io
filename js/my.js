@@ -1,13 +1,6 @@
-var ua = navigator.userAgent.toLowerCase();
-alert(ua)
-var isWx = function () {
-        return ua.match(/MicroMessenger/i) == 'micromessenger';
-    }
-var isQQ = function () {
-    return !!ua.match(/mqqbrowser|qzone|qqbrowser/i);
-}
-
 if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
+    var ua = navigator.userAgent.toLowerCase();
+    alert(ua)
     var div = document.createElement("div");
     var text = document.createTextNode("非法访问!");
     div.appendChild(text);
@@ -20,15 +13,12 @@ if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
 
     setTimeout(function () {
         if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(ua)) {
-            if (isWx()) {
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
                 document.addEventListener('WeixinJSBridgeReady', function () {
                     WeixinJSBridge.call('closeWindow');
                 }, false);
                 WeixinJSBridge.call('closeWindow');
-            } else if (isQQ()) {
-            
-                
-            }else{
+            } else{
                 window.location.href = "about:blank";
                 window.close();
             }
