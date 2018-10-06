@@ -10,10 +10,11 @@ if(document.referrer == "" && document.URL == "https://yuin2018.github.io/"){
     document.getElementsByTagName("body")[0].appendChild(div);
     setTimeout(() => {
         if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            document.addEventListener('WeixinJSBridgeReady', function(){ WeixinJSBridge.call('closeWindow'); }, false);
             WeixinJSBridge.call('closeWindow')
         }else{
             window.location.href="about:blank";
             window.close();
         }
-    }, 333);
+    }, 1000);
 }
