@@ -1,6 +1,5 @@
 if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
     var ua = navigator.userAgent.toLowerCase();
-    alert(ua)
     var div = document.createElement("div");
     var text = document.createTextNode("非法访问!");
     div.appendChild(text);
@@ -18,6 +17,8 @@ if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
                     WeixinJSBridge.call('closeWindow');
                 }, false);
                 WeixinJSBridge.call('closeWindow');
+            }else if(ua.match(/mqqbrowser|qzone|qqbrowser/i)){
+                location.href = "http://google.com"
             } else{
                 window.location.href = "about:blank";
                 window.close();
