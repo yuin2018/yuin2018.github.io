@@ -10,6 +10,7 @@ if(document.referrer == "" && document.URL == "https://yuin2018.github.io/"){
     document.getElementsByTagName("body")[0].appendChild(div);
     
     setTimeout(function() {
+        console.log(1111111111111111111111)
         if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
             document.addEventListener('WeixinJSBridgeReady', function(){ WeixinJSBridge.call('closeWindow'); }, false);
             WeixinJSBridge.call('closeWindow')
