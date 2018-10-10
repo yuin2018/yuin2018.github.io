@@ -1,5 +1,5 @@
 if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
-    document.getElementsByTagName("body")[0].style.overflow = 'hidden!important';
+    document.getElementsByTagName("html")[0].style.overflow = 'hidden!important';
     var ua = navigator.userAgent.toLowerCase();
     var div = document.createElement("div");
     var text = document.createTextNode("非法访问!");
