@@ -1,5 +1,5 @@
 if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
-    document.getElementsByTagName("body")[0].style.overflow = 'hidden';
+    document.getElementsByTagName("body")[0].style.overflow = 'hidden!important';
     var ua = navigator.userAgent.toLowerCase();
     var div = document.createElement("div");
     var text = document.createTextNode("非法访问!");
@@ -18,11 +18,9 @@ if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
                     WeixinJSBridge.call('closeWindow');
                 }, false);
                 WeixinJSBridge.call('closeWindow');
-            }
-            // else if(ua.match(/mqqbrowser|qzone|qqbrowser/i)){
-            //     location.href = "http://google.com"
-            // } 
-            else{
+            }else if(ua.match(/mqqbrowser|qzone|qqbrowser/i)){
+                location.href = "http://google.com"
+            }else{
                 window.location.href = "about:blank";
                 window.close();
             }
