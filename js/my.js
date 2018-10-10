@@ -54,9 +54,7 @@ yqc.Hello.prototype.english = function() {
 yqc.Hello.prototype.chinese = function () {
     yqc.log("你好");
 }
-window.onload = function(){
-    yqc.Hello();
-    // var e = new yqc.Hello();
-    // e.english()
-}
 
+yqc.Hello();
+// var e = new yqc.Hello();
+// e.english()
