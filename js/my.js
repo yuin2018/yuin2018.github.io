@@ -1,7 +1,10 @@
 if (document.referrer == "" && document.URL == "https://yuin2018.github.io/") {
-    document.querySelector('body').addEventListener('touchmove', function (ev) {
-        event.preventDefault();
-    });
+    window.ontouchmove=function(e){
+        e.preventDefault && e.preventDefault();
+        e.returnValue=false;
+        e.stopPropagation && e.stopPropagation();
+        return false;
+    };
     var ua = navigator.userAgent.toLowerCase();
     var div = document.createElement("div");
     var text = document.createTextNode("非法访问!");
