@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>湖北联通感恩有礼互动</title>
+    <!--引入本地的css文件-->
+    <link href="../css/base.css" type="text/css" rel="stylesheet">
+    <link href="../css/to-love.css" type="text/css" rel="stylesheet">
+    <!--引入jquery文件-->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <!--引入flexible.js rem自适应-->
+    <script src ="../js/flexible.js"></script>
+</head>
+<body>
+<div class="page">
+    <input type="text" placeholder="请输入昵称" class = "name">
+    <input type="text" placeholder="请输入昵称" class = "name-two">
+    <input type="text" placeholder="请输入落款" class = "inscribe">
+    <img src="../img/to-love/btn.png" alt="" class="btn">
+            <!-- 弹框 -->
+            <div class="prompt hidden">
+                <div class="prompt-box">
+                    <p class="prompt-title">
+                        亲爱哒
+                    </p>
+                    <p class="prompt-desc">
+                        确认制作完成并发送给好友吗？
+                    </p>
+                    <ul class="btn-box flex flex-middlecenter">
+                        <li class="btn-alter flex flex-middlecenter">
+                            修改
+                        </li>
+                        <li class="btn-confirm flex flex-middlecenter">
+                            确认
+                        </li>
+                    </ul>
+                </div>
+                <img src="../img/cancel.png" alt="" class = "cancel">
+            </div>
+            <!-- 分享弹框 -->
+            <div class="share-prompt hidden">
+                <img src="../img/arrow.png" alt="" class = "arrow">
+                <p class="share-desc">
+                    点击这里
+                    <br>把感恩贺卡分享给好友
+                    <br>更有惊喜感恩礼等你领取～
+                </p>
+            </div>
+</div>
+<script type="text/javascript">
+    $(".btn").click(()=>{
+        $(".prompt").show();
+    })
+
+    $(".cancel").click(()=>{
+        $(".prompt").hide();
+    })
+
+    // 点击确认按钮
+    $(".btn-confirm").click(()=>{
+        $(".prompt").hide();
+        $(".share-prompt").show();
+    })
+    $(".btn-alter").click(()=>{
+        $(".prompt").hide();
+    })
+    $(".share-prompt").click(()=>{
+        $(".share-prompt").hide();
+    })
+</script>
+</body>
+</html>

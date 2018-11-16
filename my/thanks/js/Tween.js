@@ -264,7 +264,49 @@ this.TWEEN = this.TWEEN || {}, function() {
 		}
 		e._registered = i
 	}, e.wait = function(t, e) {
-		if (null == t || t <= 0="" 0)="" return="" this;="" var="" i="this._cloneProps(this._curQueueProps);" this._addstep({="" d:="" t,="" p0:="" i,="" e:="" this._linearease,="" p1:="" v:="" e="" })="" },="" e.to="function(t," e,="" i)="" {="" (isnan(e)="" ||="" <="" &&="" (e="0)," 0,="" this._cloneprops(this._curqueueprops),="" this._cloneprops(this._appendqueueprops(t))="" e.call="function(t," this._addaction({="" f:="" p:="" [this],="" o:="" this._target="" e.set="function(t," e)="" this._set,="" this,="" [t,="" this._target]="" e.play="function(t)" t="" (t="this)," this.call(t,="" t.setpaused,="" [!1])="" e.pause="function(t)" [!0])="" e.start="function()" this.setpaused(!1)="" e.stop="function()" this.setpaused(!0)="" e.isplay="function()" !this._paused="" e.setposition="function(t," null="=" o="!1;" if="" (i="">= this.duration && (this.loop ? i %= this.duration : (i = this.duration, o = !0)), i == this._prevPos) return o;
+		if (null == t || t <= 0) return this;
+		var i = this._cloneProps(this._curQueueProps);
+		return this._addStep({
+			d: t,
+			p0: i,
+			e: this._linearEase,
+			p1: i,
+			v: e
+		})
+	}, e.to = function(t, e, i) {
+		return (isNaN(e) || e < 0) && (e = 0), this._addStep({
+			d: e || 0,
+			p0: this._cloneProps(this._curQueueProps),
+			e: i,
+			p1: this._cloneProps(this._appendQueueProps(t))
+		})
+	}, e.call = function(t, e, i) {
+		return this._addAction({
+			f: t,
+			p: e || [this],
+			o: i || this._target
+		})
+	}, e.set = function(t, e) {
+		return this._addAction({
+			f: this._set,
+			o: this,
+			p: [t, e || this._target]
+		})
+	}, e.play = function(t) {
+		return t || (t = this), this.call(t, t.setPaused, [!1])
+	}, e.pause = function(t) {
+		return t || (t = this), this.call(t, t.setPaused, [!0])
+	}, e.start = function() {
+		return this.setPaused(!1)
+	}, e.stop = function() {
+		return this.setPaused(!0)
+	}, e.isPlay = function() {
+		return !this._paused
+	}, e.setPosition = function(t, e) {
+		t < 0 && (t = 0), null == e && (e = 1);
+		var i = t,
+			o = !1;
+		if (i >= this.duration && (this.loop ? i %= this.duration : (i = this.duration, o = !0)), i == this._prevPos) return o;
 		var n = this._prevPos;
 		if (this.position = this._prevPos = i, this._prevPosition = t, this._target) if (o) this._updateTargetProps(null, 1);
 		else if (this._steps.length > 0) {
@@ -518,7 +560,27 @@ this.TWEEN = this.TWEEN || {}, function() {
 		if (!(h >= 6 && (h - 2) % 4 == 0)) throw "invalid 'path' data, please see documentation for valid paths";
 		a._segments = [], a._length = 0;
 		for (var l = 2; l < h; l += 4) {
-			for (var u, p, d = c[l - 2], f = c[l - 1], v = c[l + 0], m = c[l + 1], g = c[l + 2], y = c[l + 3], b = d, E = f, w = 0, A = [], P = 1; P <= 0="==" 2="" 10;="" p++)="" {="" var="" s="P" 10,="" x="1" -="" s;="" u="x" *="" d="" +="" v="" g,="" p="x" f="" m="" y,="" w="" =="" b)="" (s="p" e)="" s))="" 1],="" b="u," e="p" }="" a._segments.push(w),="" a._segments.push(a),="" a._length="" a.orient="!0;" _="{};" return="" t.calc(a,="" a.start,="" _),="" e.__rotpaths="Number(_.rotation.toFixed(5))," a.end,="" e.__rotpathe="Number(_.rotation.toFixed(5))," r),="" ?="" (e.__guidedata="a," t.testrotdata(e,="" n)="" :="" n="" },="" t.testrotdata="function(t," if="" (void="" t.__rotglobals="" ||="" void="" t.__rotglobale)="" (t.__needsrot)="" return;="" !="=" t._curqueueprops.rotation="" e.rotation="t.target.rotation" t.__guidedata)="" i="t.__guideData," o="t.__rotGlobalE" t.__rotglobals,="" t.__rotpaths,="" r="o" n;="" ("auto"="=" i.orient)=""> 180 ? r -= 360 : r < -180 && (r += 360);
+			for (var u, p, d = c[l - 2], f = c[l - 1], v = c[l + 0], m = c[l + 1], g = c[l + 2], y = c[l + 3], b = d, E = f, w = 0, A = [], P = 1; P <= 10; P++) {
+				var S = P / 10,
+					x = 1 - S;
+				u = x * x * d + 2 * x * S * v + S * S * g, p = x * x * f + 2 * x * S * m + S * S * y, w += A[A.push(Math.sqrt((s = u - b) * s + (s = p - E) * s)) - 1], b = u, E = p
+			}
+			a._segments.push(w), a._segments.push(A), a._length += w
+		}
+		s = a.orient, a.orient = !0;
+		var _ = {};
+		return t.calc(a, a.start, _), e.__rotPathS = Number(_.rotation.toFixed(5)), t.calc(a, a.end, _), e.__rotPathE = Number(_.rotation.toFixed(5)), a.orient = !1, t.calc(a, a.end, r), a.orient = s, a.orient ? (e.__guideData = a, t.testRotData(e, r), n) : n
+	}, t.testRotData = function(t, e) {
+		if (void 0 === t.__rotGlobalS || void 0 === t.__rotGlobalE) {
+			if (t.__needsRot) return;
+			void 0 !== t._curQueueProps.rotation ? t.__rotGlobalS = t.__rotGlobalE = t._curQueueProps.rotation : t.__rotGlobalS = t.__rotGlobalE = e.rotation = t.target.rotation || 0
+		}
+		if (void 0 !== t.__guideData) {
+			var i = t.__guideData,
+				o = t.__rotGlobalE - t.__rotGlobalS,
+				n = t.__rotPathE - t.__rotPathS,
+				r = o - n;
+			if ("auto" == i.orient) r > 180 ? r -= 360 : r < -180 && (r += 360);
 			else if ("cw" == i.orient) {
 				for (; r < 0;) r += 360;
 				0 == r && o > 0 && 180 != o && (r += 360)
@@ -567,4 +629,4 @@ this.TWEEN = this.TWEEN || {}, function() {
 	"use strict";
 	var t = TWEEN.TweenJS = TWEEN.TweenJS || {};
 	t.version = "NEXT", t.buildDate = "Wed, 25 Nov 2015 19:32:49 GMT"
-}()</=></=>
+}()

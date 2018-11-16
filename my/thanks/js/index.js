@@ -486,7 +486,91 @@ imgarr.push('images/play.png');
 imgarr.push('images/pause.png');
 imgarr.push('images/share.jpg');
 
-for(var i = 1; i<4; i++){="" imgarr.push('images="" p1_'+i+'.png');="" }="" for(var="" i="0;" i<21;="" p1_a'+i+'.png');="" i<15;="" p2_'+i+'.png');="" i<6;="" p3_'+i+'.png');="" i<8;="" p4_'+i+'.png');="" i<32;="" p4_a'+i+'.png');="" i<9;="" p5_'+i+'.png');="" i<7;="" p6_'+i+'.png');="" i<4;="" p7_'+i+'.png');="" p7_a'+i+'.png');="" i<26;="" p7_m'+i+'.png');="" i<11;="" p8_'+i+'.png');="" p9_'+i+'.png');="" moonlodaing(imgarr,function(){="" jq('.loading').fadeout(100);="" jq('.page-wrap').show();="" })="" var="" href="location.href;" baseurl="href.split("index.html")[0];" imgloader(imgarr,="" function="" (t)="" {="" console.log(math.floor(t="" *="" 100)="" +="" "%")="" $("#process").html(math.floor(t="" "%");="" if="" (t="=" 1)="" $('.loading').hide();="" $(".page-wrap").show();="" anim_page1.play();="" },="" baseurl);="" moonlodaing(imgs,callback){="" if(!imgs){return="" false};="" img="[];" len="imgs.length;" loadedcount="0;" img[i]="new" image();="" img[i].src="imgs[i];" img[i].onload="function(){" loadedcount++;="" (loadedcount="">=len){
+for(var i = 1; i<4; i++){
+    imgarr.push('images/p1_'+i+'.png');
+}
+
+for(var i = 0; i<21; i++){
+    imgarr.push('images/p1_a'+i+'.png');
+}
+
+for(var i = 1; i<15; i++){
+    imgarr.push('images/p2_'+i+'.png');
+}
+
+for(var i = 1; i<6; i++){
+    imgarr.push('images/p3_'+i+'.png');
+}
+
+for(var i = 1; i<8; i++){
+    imgarr.push('images/p4_'+i+'.png');
+}
+
+for(var i = 1; i<32; i++){
+    imgarr.push('images/p4_a'+i+'.png');
+}
+
+for(var i = 1; i<9; i++){
+    imgarr.push('images/p5_'+i+'.png');
+}
+
+for(var i = 1; i<7; i++){
+    imgarr.push('images/p6_'+i+'.png');
+}
+
+for(var i = 1; i<4; i++){
+    imgarr.push('images/p4_a'+i+'.png');
+}
+
+for(var i = 1; i<6; i++){
+    imgarr.push('images/p7_'+i+'.png');
+}
+
+for(var i = 1; i<4; i++){
+    imgarr.push('images/p7_a'+i+'.png');
+}
+
+for(var i = 1; i<26; i++){
+    imgarr.push('images/p7_m'+i+'.png');
+}
+
+for(var i = 1; i<11; i++){
+    imgarr.push('images/p8_'+i+'.png');
+}
+
+for(var i = 1; i<6; i++){
+    imgarr.push('images/p9_'+i+'.png');
+}
+
+// moonLodaing(imgarr,function(){
+//     jq('.loading').fadeOut(100);
+//     jq('.page-wrap').show();
+// })
+
+var href = location.href;
+var baseUrl = href.split("index.html")[0];
+
+imgLoader(imgarr, function (t) {
+	// console.log(Math.floor(t * 100) + "%")
+	$("#process").html(Math.floor(t * 100) + "%");
+	if (t == 1) {
+        $('.loading').hide();
+        $(".page-wrap").show();
+        anim_page1.play();
+	}
+}, baseUrl);
+
+function moonLodaing(imgs,callback){
+    if(!imgs){return false};
+    var img=[];
+    var len=imgs.length;
+    var loadedCount = 0;
+    for(var i=0;i<len;i++){
+        img[i]=new Image();
+        img[i].src=imgs[i];
+        img[i].onload = function(){
+            loadedCount++;
+            if (loadedCount>=len){
                 callback ? callback() : null;
             }
         };
@@ -529,4 +613,3 @@ function updatePositon(){
 }
 
 updatePositon();
-</4;>
