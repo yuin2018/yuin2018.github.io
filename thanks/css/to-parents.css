@@ -1,0 +1,98 @@
+body{
+    width: 100%;
+    height: 16.08rem;
+    background: url("../img/to-parents/3.jpg") no-repeat;
+    background-size: 100% 100%;
+    background-color: #05327d;
+    padding-top: 0.693333rem;
+} 
+.name,.inscribe{
+    width: 2.8rem;
+    color: #F2EC7D;
+    border-bottom: 0.04rem solid #F2EC7D;
+    background-color: transparent;
+    font-size: 0.52rem  ;
+    font-family:HYTiaoTiaoTiJ;
+    margin-left: 0.986667rem;
+}
+.name::-webkit-input-placeholder,.inscribe::-webkit-input-placeholder{
+    color: #F2EC7D;
+}
+.inscribe{
+    display: block;
+    margin: 6.066667rem 0 0 6.306667rem;
+}
+.btn{
+    width: 8.08rem;
+    display: block;
+    margin: 5.6rem auto 0;
+}
+
+.prompt,.share-prompt{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: RGBA(0, 0, 0, 0.7);
+    left: 0;
+    top:0;
+    margin: auto;
+}
+.prompt-box{
+    width: 7.693333rem;
+    margin: 4.12rem auto 0;
+    padding: 0.8rem 0 0.6rem;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 0.266667rem;
+}
+.prompt-title{
+    font-size: 0.5rem;
+    color: #FF623D;
+    margin-bottom: 1.48rem;
+    font-weight:bold;
+}
+.prompt-desc{
+    font-size: 0.4rem;
+    color: #666666;
+    margin-bottom: 1.506667rem;
+}
+.btn-alter{
+    width: 3.346667rem;
+    height: 1.066667rem;
+    background-color: #7C7474;
+    border-radius: 0.586667rem;
+    font-size: 0.4rem;
+    color: #FFFFFF;
+    margin-right: 0.173333rem;
+}
+.btn-confirm{
+    width: 3.346667rem;
+    height: 1.066667rem;
+    background-color: #FFDC52;
+    border-radius: 0.586667rem;
+    font-size: 0.4rem;
+    color: #9F4B00;
+}
+.cancel{
+    width: 0.906667rem;
+    display: block;
+    margin:0.453333rem auto 0;
+}
+.arrow{
+    width: 3rem;
+    margin: 0.186667rem 0 0.386667rem 5.986667rem;
+}
+.share-desc{
+    width: 5.466667rem;
+    font-size: 0.39rem;
+    color: #FFFEFE;
+    text-align: center;
+    margin: 0 0 0 3.933333rem;
+    line-height: 1.5;
+}
+.remind{
+    font-size: 0.32rem;
+    color: #FF522A;
+    text-align: center;
+    margin-top: 0.333333rem;
+}
