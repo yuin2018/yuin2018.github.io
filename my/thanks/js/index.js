@@ -65,7 +65,7 @@ var h5 = new PageSlider({
                 {
                     imgSrc: imgArr1.length - 1,	    // 以图片数为目标值
                     roundProps: "imgSrc",			// 仅产生整数
-                    repeat: 8,						// 循环次数,-1为反复循环,0为执行一次
+                    repeat: 0,						// 循环次数,-1为反复循环,0为执行一次
                     immediateRender: false,			// 首张图片自动渲染
                     ease: Linear.easeNone,			// 无缓动
                     onUpdate: function () {
@@ -462,7 +462,8 @@ var h5 = new PageSlider({
                 onComplete: function () {
                     setTimeout(function () {
                         anim.stop();
-                        h5.moveTo(8,true);
+                        location.href = "page/page9.html"
+                        // h5.moveTo(8,true);
                     }, 800);
                 }
             }, 4);
@@ -613,3 +614,8 @@ function updatePositon(){
 }
 
 updatePositon();
+
+
+$("img").click(function(){
+    return false
+})

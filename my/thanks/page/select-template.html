@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -15,27 +16,132 @@
     <link href="../css/base.css" type="text/css" rel="stylesheet">
     <link href="../css/select-template.css" type="text/css" rel="stylesheet">
     <!--引入jquery文件-->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery-1.7.2.min.js"></script>
     <!--引入flexible.js rem自适应-->
-    <script src ="../js/flexible.js"></script>
+    <script src="../js/flexible.js"></script>
+    <style>
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color:#fff;
+            z-index: 9999;
+        }
+        .loadimg{ width: 30%;margin: 150px auto; display: block; }
+        .load-tet{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: -90px;
+            color: #000;
+            font-size: 24px;
+            display: block;
+        }
+
+        #process{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: -45px;
+            color: #000;
+            font-size: 24px;
+            display: block;
+        }
+
+        .loading-text {
+            position: absolute;
+            top: 400px;
+            /* top: 0;
+            bottom: 0; */
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 26px;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+        }
+    </style>
 </head>
+
 <body>
-   <div class="page">
+    <div class="loading">
+        <img src="../images/loading.gif" class="loadimg">
+        <div class="loading-text">
+            <p class="load-tet">loading...</p>
+            <i id="process">0%</i>
+        </div>
+    </div>
+    <div class="page">
         <img src="../img/select-template/select.png" alt="" class="select">
         <div class="select-item flex flex-between">
-            <a href="to-parents.html">
-                <img src="../img/select-template/1.png" alt="" class="item">
+            <a href="to-parents.html" id="fir">
+                <img src="" alt="" class="item">
             </a>
-            <a href="to-friends.html">
-                <img src="../img/select-template/2.png" alt="" class="item">
+            <a href="to-friends.html" id="sec">
+                <img src="" alt="" class="item">
             </a>
-            <a href="to-love.html">
-                <img src="../img/select-template/3.png" alt="" class="item">
+            <a href="to-love.html" id="thi">
+                <img src="" alt="" class="item">
             </a>
         </div>
-   </div>
-<script type="text/javascript">
+    </div>
+    <script type="text/javascript">
+        //存放图片路径
+        var imgSrcArr = [
+            '../img/select-template/1.png',
+            '../img/select-template/2.png',
+            '../img/select-template/3.png'
+        ];
 
-</script>
+        var imgWrap = $(".item");
+
+        function preloadImg(arr) {
+            var num = 0;
+            for (var i = 0; i < arr.length; i++) {
+                var oImg = new Image(); 
+                oImg.onload = function () {
+                    num++;
+                    $("#process").text((num / arr.length * 100).toFixed(2) + '%');
+                    if (num == arr.length) {
+                        $(".loading").hide()
+                        show()
+                    }
+                }
+                oImg.src = imgSrcArr[i];
+                imgWrap[i].src = arr[i];
+            }
+        }
+
+        $(function () {
+            preloadImg(imgSrcArr);
+        })
+
+        function show() {
+            setTimeout(function () {
+                $("#fir").css("transform", "translateY(0)")
+            }, 200);
+            setTimeout(function () {
+                $("#sec").css("transform", "translateY(0)")
+            }, 700)
+            setTimeout(function () {
+                $("#thi").css("transform", "translateY(0)")
+            }, 1200)
+            setTimeout(function () {
+                $(".select").css("opacity", "1")
+                setTimeout(() => {
+                    $(".select").css("opacity", "0")
+                    setTimeout(function () {
+                        $(".select").css("opacity", "1")
+                    }, 500)
+                }, 500);
+            }, 2000);
+        }
+    </script>
 </body>
+
 </html>

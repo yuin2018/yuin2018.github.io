@@ -15,7 +15,7 @@
     <link href="../css/base.css" type="text/css" rel="stylesheet">
     <link href="../css/to-love.css" type="text/css" rel="stylesheet">
     <!--引入jquery文件-->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
     <!--引入flexible.js rem自适应-->
     <script src ="../js/flexible.js"></script>
 </head>
@@ -55,26 +55,6 @@
                 </p>
             </div>
 </div>
-<script type="text/javascript">
-    $(".btn").click(()=>{
-        $(".prompt").show();
-    })
-
-    $(".cancel").click(()=>{
-        $(".prompt").hide();
-    })
-
-    // 点击确认按钮
-    $(".btn-confirm").click(()=>{
-        $(".prompt").hide();
-        $(".share-prompt").show();
-    })
-    $(".btn-alter").click(()=>{
-        $(".prompt").hide();
-    })
-    $(".share-prompt").click(()=>{
-        $(".share-prompt").hide();
-    })
-</script>
+<script src="../js/writeLetter.js"></script>
 </body>
 </html>

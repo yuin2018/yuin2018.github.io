@@ -15,9 +15,17 @@
     <link href="../css/base.css" type="text/css" rel="stylesheet">
     <link href="../css/my-prize.css" type="text/css" rel="stylesheet">
     <!--引入jquery文件-->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
     <!--引入flexible.js rem自适应-->
     <script src ="../js/flexible.js"></script>
+    <style>
+        .page{
+            perspective: 1000px
+        }
+        .item{
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="page">
@@ -57,7 +65,7 @@
                     已领取
                 </div>
             </div>
-             <div class="item flex flex-between flex-middle item-special">
+             <div class="item flex flex-between flex-middle">
                 <div class="flex flex-vertical">
                     <p class="traffic omit">
                         100M流量
@@ -66,16 +74,16 @@
                         2018.11.23  12:30
                     </p>
                 </div>
-                <div class="receive-btn flex flex-middlecenter hidden">
+                <!-- <div class="receive-btn flex flex-middlecenter hidden">
                         已领取
-                 </div>
+                 </div> -->
                 <div class="flex box-special">
-                    <div class="wait-btn flex flex-middlecenter">
+                    <div class="unreceive-btn flex flex-middlecenter">
                         待领取
                     </div>
-                    <div class="send-btn flex flex-middlecenter">
+                    <!-- <div class="send-btn flex flex-middlecenter">
                         转增
-                    </div>
+                    </div> -->
                 </div>
             </div>
              <div class="item flex flex-between flex-middle">
@@ -194,6 +202,19 @@
         $(".box-special").hide();
         window.location.href = 'send.html'; 
     })
+    var item = $(".item");
+    for(var i = 0;i<item.length;i++){
+        show(i);
+    }
+
+    function show(i){
+        setTimeout(function() {
+            item.eq(i).css({"opacity":"1","transform":"translateZ(50px)"});
+            setTimeout(() => {
+                item.eq(i).css("transform","translateZ(0)")
+            }, 100);
+        }, i*100);
+    }
 </script>
 </body>
 </html>
