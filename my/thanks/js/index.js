@@ -240,6 +240,7 @@ var h5 = new PageSlider({
                             anim.stop();
                             h5.moveTo(4,true);
                         }, 800);
+                        imgLoader(images, function (t) {}, baseUrl);
                     }
                 },
                 0.5
@@ -349,6 +350,7 @@ var h5 = new PageSlider({
                             // console.log("该换了");
                             h5.moveTo(6,true);
                             anim2.stop();
+
                         }
                     }
                 },
@@ -543,6 +545,27 @@ for(var i = 1; i<6; i++){
     imgarr.push('images/p9_'+i+'.png');
 }
 
+var images = [];
+images.push('img/select-template/1.png')
+images.push('img/select-template/2.png')
+images.push('img/select-template/3.png')
+images.push('img/select-template/bg.png')
+images.push('img/select-template/select.png')
+images.push('img/writeLetter/3.png')
+images.push('img/writeLetter/4.png')
+images.push('img/writeLetter/5.png')
+images.push('img/writeLetter/btn.png')
+images.push('img/arrow.png')
+images.push('img/bg.png')
+images.push('img/btn-get.png')
+images.push('img/btn-bg.png')
+images.push('img/btn-share.png')
+images.push('img/cancel.png')
+images.push('img/icon-people.png')
+images.push('img/my-prize.png')
+images.push('img/prompt-bg.png')
+images.push('img/rule.png')
+
 // moonLodaing(imgarr,function(){
 //     jq('.loading').fadeOut(100);
 //     jq('.page-wrap').show();
@@ -585,17 +608,14 @@ h5.wxShare('湖北联通感恩有礼互动', '人间有真情,人间有大爱', 
 })
 
 $('.p9_4').on('touchstart',function(){
-    // alert('制作感恩卡');
     window.location.href = 'page/select-template.html'
 })
 
 $('.p9_6').on('touchstart',function(){
-    // alert('我的奖品');
     window.location.href = 'page/my-prize.html'
 })
 
 $('.p9_7').on('touchstart',function(){
-    // alert('活动规则');
     window.location.href = 'page/rule.html'
 })
 
