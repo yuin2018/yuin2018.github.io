@@ -239,8 +239,8 @@ var h5 = new PageSlider({
                         setTimeout(function () {
                             anim.stop();
                             h5.moveTo(4,true);
+                            // imgLoader(images, function (t) {}, baseUrl);
                         }, 800);
-                        imgLoader(images, function (t) {}, baseUrl);
                     }
                 },
                 0.5
