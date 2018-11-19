@@ -240,7 +240,7 @@ var h5 = new PageSlider({
                             anim.stop();
                             h5.moveTo(4,true);
                         }, 800);
-                        // imgLoader(images, function (t) {}, baseUrl);
+                        imgLoader(images, function (t) {}, baseUrl);
                     }
                 },
                 0.5
