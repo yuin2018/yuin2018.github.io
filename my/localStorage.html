@@ -48,17 +48,16 @@
 <script>
     var showList = ["div", "ol"]
     $(function () {
-        var arr = getCacheHandleModuleId();
-        console.log(arr)
-        if (arr != null) {
+        var showList = getCacheHandleModuleId();
+        if (showList != null) {
             $("section").hide();
-            if (arr === "") {
+            if (showList === "") {
                 return;
             }
-            arr = arr.split(",");
+            showList = showList.split(",");
 
-            for (var i = 0; i < arr.length; i++) {
-                $("#" + arr[i]).show()
+            for (var i = 0; i < showList.length; i++) {
+                $("#" + showList[i]).show()
             }
         }
     })
