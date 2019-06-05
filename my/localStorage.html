@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: #eee;
+        }
+
+        ol {
+            background-color: lightcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="div">
+        <div>这是div1</div>
+        <div>这是div2</div>
+        <div>这是div3</div>
+        <div>这是div4</div>
+        <div>这是div5</div>
+    </section>
+    <section id="ol">
+        <ol>
+            <li>这是ol1</li>
+            <li>这是ol2</li>
+            <li>这是ol3</li>
+            <li>这是ol4</li>
+            <li>这是ol5</li>
+        </ol>
+    </section>
+    <button id="hidediv">
+        隐藏div
+    </button>
+    <button id="hideol">
+        隐藏ol
+    </button>
+    <button id="showall">全显示</button>
+</body>
+
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var showList = ["div", "ol"]
+    $(function () {
+        var arr = getCacheHandleModuleId();
+        console.log(arr)
+        if (arr != null) {
+            $("section").hide();
+            if (arr === "") {
+                return;
+            }
+            arr = arr.split(",");
+
+            for (var i = 0; i < arr.length; i++) {
+                $("#" + arr[i]).show()
+            }
+        }
+    })
+    $("button").on("click", function () {
+        var id = $(this).attr("id")
+        if (id != "showall") {
+            id = id.slice(4)
+            $("#" + id).hide();
+            showList.remove(id);
+        } else {
+            $("section").show();
+            showList = ["div", "ol"]
+        }
+        cacheHandleModuleId(showList)
+    })
+
+
+    // 缓存当前操作的模块ID
+    function cacheHandleModuleId(showList) {
+        localStorage.setItem('showList', showList);
+    }
+    // 获取缓存中的模块ID
+    function getCacheHandleModuleId() {
+        return localStorage.getItem('showList');
+    }
+
+
+    Array.prototype.indexOf = function (val) {
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] == val) return i;
+        }
+        return -1;
+    };
+    //在 Array 原型中植入 remove 方法 remove 中调用 indexOf 判断 str 是否存在 arr 中,有则拿到 index
+    Array.prototype.remove = function (val) {
+        var index = this.indexOf(val);
+        if (index > -1) {
+            this.splice(index, 1);
+        }
+    };
+</script>
