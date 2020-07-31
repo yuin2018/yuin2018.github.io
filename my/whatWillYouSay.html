@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var url = 'https://restapi.amap.com/v3/ip?key=e2b04289e870b005374ee030148d64fd&s=rsv3&platform=JS&logversion=2.0&sdkversion=1.4.14';
+    function get(url) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = () => resolve(xhr.responseText);
+            xhr.onerror = () => reject(xhr.statusText);
+            xhr.send();
+        });
+    };
+
+    // var getCity = function getIp(e) {
+    //     locationId = e.city;
+    //     url = 'https://geoapi.heweather.net/v2/city/lookup?location=' + locationId + '&key=' + '1b236818e496496fa1b5891ef90af1ee'
+    //     get(url).then(e=>{
+    //         var data = JSON.parse(e)
+    //         url = 'https://devapi.heweather.net/v7/weather/3d?location=' + data.location[0].id + '&key=1b236818e496496fa1b5891ef90af1ee'
+    //     })
+    // }
+
+    // getCity.then(get(url))
+
+    var getLocation = get(url).then(e => {
+        var locationId = JSON.parse(e).city;
+        return url = 'https://geoapi.heweather.net/v2/city/lookup?location=' + locationId + '&key=' + '1b236818e496496fa1b5891ef90af1ee'
+    })
+
+    getLocation.then(e => get(e)).then(e => {
+        console.log(e)
+        var data = JSON.parse(e)
+        url = 'https://devapi.heweather.net/v7/weather/3d?location=' + data.location[0].id + '&key=1b236818e496496fa1b5891ef90af1ee'
+        return get(url)
+    }).then(e => {
+        console.log(e)
+    })
+
+</script>
